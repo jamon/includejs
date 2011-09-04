@@ -15,15 +15,7 @@
  *   Petar Strinic <petar@sofea.net>
 */
 (function (window) {
-    var ann = function(funcName, func) {
-        //console.log("annotating: ", funcName);
-        return function() {
-            //console.log([funcName, "IN",  Array.prototype.slice.call(arguments,0)]);
-            var result = func.apply(this, arguments);
-            //console.log([funcName, "OUT", Array.prototype.slice.call(arguments,0), result]);
-            return result;
-        };
-    };
+
     var Include = function() {};
 
     Include.modules = {};
@@ -78,9 +70,9 @@
         delete Include.lastDefined;
         return res;
     };
-var idCounter = 0;
+
     var Module = function(name) {
-        this.id = ++idCounter;
+        this.id = ++Module.moduleCount;
         //console.log(this.id, name, "creating module", this);
         this.binds = {};
         this.deps = {};
@@ -88,6 +80,8 @@ var idCounter = 0;
             this.name = name;
         }
     };
+    Module.moduleCount = 0;
+    
     Module.prototype.loaded = false;
     Module.prototype.failed = false;
     Module.prototype.loading = false;
