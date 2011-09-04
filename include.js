@@ -148,11 +148,13 @@ var idCounter = 0;
         this.loadDependencies();
     };
     Module.prototype.loadDependencies = function() {
+        // @TODO not sure why I can't just call that.checkDependenciesAndLoad directly
+        var cdal = function() { that.checkDependenciesAndLoad(); };
         for(var dep in this.deps) {
             //console.log(this.id, "checking if dep is loaded: ", dep);
             if(!this.deps[dep].isReady() && !this.deps[dep].isLoading()) {
                 //console.log(this.id, "calling Include.include: ", dep);
-                Include.include(dep).on('ready', function() { that.checkDependenciesAndLoad(); } );
+                Include.include(dep).on('ready', cdal );
             }
         }
     };
@@ -241,22 +243,6 @@ var idCounter = 0;
 
     // include('foo/one').then('foo/two').then('foo/three').on('load', function() {})
 
-    var annotate = function(cls, clsName) {
-        for(var i in cls) {
-            if(!cls.hasOwnProperty(i)) { console.log("not own property: ", clsName, i); continue; }
-            if(typeof cls[i] !== "function") { console.log("not a function: ", clsName, i); continue; }
-            //console.log("annotating: ", clsName, i);
-            var old = cls[i];
-            (function(fCls, fClsName, fI) {
-                cls[i] = function() {
-                    //console.log([fClsName, fI, "IN",  Array.prototype.slice.call(arguments,0)]);
-                    var result = old.apply(this, arguments);
-                    //console.log([fClsName, fI, "OUT", Array.prototype.slice.call(arguments,0), result]);
-                    return result;
-                };
-            })(cls, clsName, i);
-        }
-    };
     window.include = Include.include;
     window.define = Include.define;
 })(window);
