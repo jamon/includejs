@@ -1,0 +1,35 @@
+/*
+ * The contents of this file are subject to the Mozilla Public License
+ * Version 1.1 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+
+ * Software distributed under the License is distributed on an "AS IS"
+ * basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+ * License for the specific language governing rights and limitations
+ * under the License.
+ * 
+ * Contributor(s): 
+ *   Jamon Terrell <jamon@sofea.net>
+ *   Petar Strinic <petar@sofea.net>
+*/
+
+include.js - v0.1
+
+Minimalist Async Module Definition/Dependency Management library for javascript with support for optional
+dependencies (and error handling support to be added).
+
+Changelog:
+  * First public release (complete rewrite from old public code)
+
+Bugs/Todo:
+  * add documentation
+  * OnError callback doesn't isn't implemented yet
+  * Timeouts not yet implemented
+  * Logging/Debug API not implemented
+  * Configuration API not implemented (direct access to sofea.baseDir will be "removed" at some point)
+  * Add preservation of existing require/define methods (a la jquery's overriding of $)
+  * Need to further test deeply nested dependencies
+  * Need to fully support "AMD" API, (optional params on define are currently missing, probably more (need tests)
+  * Add support for suspend/resume (for compilation of scripts)
+  * Add script compiler
