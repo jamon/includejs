@@ -95,7 +95,6 @@ describe('Include', function() {
             expect(true).toBe(false); // not sure of the right way of saying this code should never have been called.
         }, function() {
             failed = true;
-            console.log("Got callback from error listener", arguments);
         });
         waitsFor(function() { return failed; }, "Failure callback never called", 5000);
     });
