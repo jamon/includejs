@@ -33,3 +33,4 @@ Bugs/Todo:
   * Need to fully support "AMD" API, (optional params on define are currently missing, probably more (need tests)
   * Add support for suspend/resume (for compilation of scripts)
   * Add script compiler
+  * Add "context" support (i.e. remove all instance level vars, allow aquiring a new instance)
