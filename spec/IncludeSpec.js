@@ -89,4 +89,14 @@ describe('Include', function() {
         });
         waitsFor(function() { return loaded; }, "Nested Include callback never called", 5000);
     });
+    it('will call your error handler if a module fails to load', function() {
+        var failed = false;
+        include(["js/NonExistent"], function(NonExistent) {
+            expect(true).toBe(false); // not sure of the right way of saying this code should never have been called.
+        }, function() {
+            failed = true;
+            console.log("Got callback from error listener", arguments);
+        });
+        waitsFor(function() { return failed; }, "Failure callback never called", 5000);
+    });
 });

@@ -14,17 +14,28 @@
  *   Petar Strinic <petar@sofea.net>
 */
 
-include.js - v0.1
+include.js - v0.2
 
 Minimalist Async Module Definition/Dependency Management library for javascript with support for optional
 dependencies (and error handling support to be added).
 
+Why another AMD implementation?
+  * Support for optional dependencies
+  * Graceful loading failures (with support for error handling callbacks)
+  * Small enough to include in your main .html file (1.5KB minified)
+
 Changelog:
+v0.2
+  * Implemented first pass of Error Callback support
+  * Added sofea.include.version variable
+  * Added alias to global method "require"
+  * Added property "amd" to specify we implement the AMD spec (probably not 100% accurately at this point)
+
+v0.1
   * First public release (complete rewrite from old public code)
 
 Bugs/Todo:
   * add documentation
-  * OnError callback doesn't isn't implemented yet
   * Timeouts not yet implemented
   * Logging/Debug API not implemented
   * Configuration API not implemented (direct access to sofea.baseDir will be "removed" at some point)
