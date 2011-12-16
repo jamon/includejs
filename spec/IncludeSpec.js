@@ -98,4 +98,12 @@ describe('Include', function() {
         });
         waitsFor(function() { return failed; }, "Failure callback never called", 5000);
     });
+    it('can include a script that is not wrapped within a define statement', function() {
+        var loaded = false;
+        include(["js/NotWrapped"], function() {
+            loaded = true;
+            expect(window.sofea.include.NotWrapped.getTrue()).toBe(true);
+        });
+        waitsFor(function() { return loaded; }, "Nested Include callback never called", 5000);
+    });
 });

@@ -14,7 +14,7 @@
  *   Petar Strinic <petar@sofea.net>
 */
 
-include.js - v0.3
+include.js - v0.3.1
 
 Minimalist Async Module Definition/Dependency Management library for javascript with support for optional
 dependencies (and error handling support to be added).
@@ -25,6 +25,8 @@ Why another AMD implementation?
   * Small enough to include in your main .html file (1.5KB minified)
 
 Changelog:
+v0.3.1
+  * Fixed support for loading files not wrapped in a define statement
 v0.3
   * Making sure onError callback is actually a function before calling it
   * Making sure onError sends at least the dependency name 
