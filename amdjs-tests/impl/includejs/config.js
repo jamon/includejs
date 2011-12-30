@@ -1,5 +1,5 @@
-var config = sofea.include,
-    go = sofea.include,
+var config = sofea.include.define,
+    go = require,
     implemented = {
 		basic: true,
 		anon: true,
